@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Demo Provider"),
         ),
-        body: DemoMultipleProvider(),
+        // body: DemoMultipleProvider(),
+        // body: DemoMultipleProvider2(),
+        body: DemoMultipleProvider2(),
       ),
     );
   }

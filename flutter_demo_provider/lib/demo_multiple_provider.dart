@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_provider/demo_change_notifier.dart';
 import 'package:provider/provider.dart';
 
+// ============================== DEMO 1 ==============================
 // ChangeNotifierProvide
+
+//* Counter1 & Counter2 Class are inherited from ChangeNotifier
+
 class Counter1 with ChangeNotifier {
   int _count = 0;
 
@@ -89,6 +93,74 @@ class TestWidget1 extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ============================== DEMO 2 ==============================
+//* Notice: Only display values on screen
+
+//* Counter3 & Counter4 Class don't inherit from ChangeNotifier
+
+class Counter3 {
+  int _count = 30;
+
+  int get count => _count; // Getter
+
+  increment() {
+    _count++;
+  }
+
+  decrement() {
+    _count--;
+  }
+}
+
+class Counter4 {
+  int _count = 40;
+
+  int get count => _count; // Getter
+
+  increment() {
+    _count++;
+  }
+
+  decrement() {
+    _count--;
+  }
+}
+
+class DemoMultipleProvider2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        Provider<Counter3>.value(value: Counter3()),
+        Provider<Counter4>.value(value: Counter4()),
+      ],
+      child: TestWidget2(),
+    );
+  }
+}
+
+class TestWidget2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Counter3 counter3 = Provider.of<Counter3>(context);
+    Counter4 counter4 = Provider.of<Counter4>(context);
+
+    return Center(
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "count3 = ${counter3.count.toString()} \ncount4 = ${counter4.count.toString()}",
+              style: TextStyle(fontSize: 50.0),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_provider/basic.dart';
 import 'package:flutter_demo_provider/demo_change_notifier.dart';
 import 'package:flutter_demo_provider/demo_multiple_provider.dart';
+import 'package:flutter_demo_provider/demo_proxy_provider.dart';
 import 'package:flutter_demo_provider/demo_value_listenable_provider.dart';
 
 void main() => runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Demo Provider"),
         ),
-        body: DemoValueListenableProvider(),
+        body: DemoProxyProvider(),
       ),
     );
   }
